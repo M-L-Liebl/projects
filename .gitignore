@@ -129,5 +129,5 @@ dmypy.json
 .pyre/
 
 # custom
-songs.txt
+songs
 *.mp3
