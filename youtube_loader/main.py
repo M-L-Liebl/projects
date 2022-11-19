@@ -2,6 +2,7 @@ import os
 from threading import Thread
 from pathlib import Path
 from sys import argv
+import time
 
 # save URLS and desired file names in e.g. file "songs"
 # format: URL,filename
@@ -56,5 +57,4 @@ if __name__=="__main__":
         loadSongs(argv[1], argv[2])
     else:
         print("You have to specify path to url_file, e.g.: python main.py song_urls")
-
-    
+        
