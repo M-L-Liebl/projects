@@ -9,6 +9,7 @@ import sys
 import time
 import re
 import matplotlib.pyplot as plt
+import math
 
 
 def init_log():
@@ -58,11 +59,19 @@ def printProgressBar (iteration, total, prefix = ' ', suffix = ' ', decimals = 1
 
 
 if __name__=="__main__":
-    init_log()
-    t = int(sys.argv[1])
-    for i in range(t):
-        log()
-        time.sleep(1)
-        printProgressBar(i+1, t)
-        
-    plot_Temp(get_Temps())
+    
+    try:
+        init_log()
+        if len(sys.argv) > 1:
+            t = int(sys.argv[1])
+        else:
+            t = -1
+        i = 0
+        while(t>0)
+        for i in range(t):
+            log()
+            time.sleep(1)
+            printProgressBar(i+1, t)
+    
+    finally:
+        plot_Temp(get_Temps())
