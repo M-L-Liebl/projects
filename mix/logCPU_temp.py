@@ -1,20 +1,29 @@
+"""
+Logs the CPU temperature a predefined time, displays temperature in graph afterwards
+
+MAKE SURE THAT log() greps the right line and get_Temps() get the right temperature (regex...)
+"""
+
 import os
 import sys
 import time
 import re
 import matplotlib.pyplot as plt
 
-def log():
-    os.system('sensors | grep Package >> log')
 
 def init_log():
     with open('log','w') as f:
         f.write("")
 
+
+def log():
+    os.system('sensors | grep CPU >> log') # check if right line is grepped
+
 def get_Temps()->list[float]:
     with open('log', 'r') as f:
         lines = f.readlines()
-    temps = [float(re.search(r'Package id 0:  \+([0-9]{2}.[0-9])',line.strip()).group(1)) for line in lines]
+    # check if correct regex for temperature
+    temps = [float(re.search(r'\+([0-9]{2}.[0-9])°C',line.strip()).group(1)) for line in lines]
     return temps[1:]
 
 def plot_Temp(temps):
@@ -26,7 +35,7 @@ def plot_Temp(temps):
     plt.show()
 
 # Print iterations progress
-def printProgressBar (iteration, total, prefix = ' ', suffix = ' ', decimals = 1, length = 100, fill = '#', printEnd = "\r"):
+def printProgressBar (iteration, total, prefix = ' ', suffix = ' ', decimals = 1, length = 100, fill = '#', printEnd = '\r'):
     """
     Call in a loop to create terminal progress bar
     @params:
