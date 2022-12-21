@@ -64,14 +64,18 @@ if __name__=="__main__":
         init_log()
         if len(sys.argv) > 1:
             t = int(sys.argv[1])
-        else:
-            t = -1
-        i = 0
-        while(t>0)
-        for i in range(t):
-            log()
-            time.sleep(1)
-            printProgressBar(i+1, t)
+            print(f"log CPU temp for {t} seconds")
+            for i in range(t):
+                log()
+                time.sleep(1)
+                printProgressBar(i+1, t)
     
+    # TODO add plotlog as argv functionality if process was ended with e.g. kill, then you can plot log
+    
+        else:
+            print("log CPU temp indefinitely")
+            while True:
+                log()
+                time.sleep(1)
     finally:
         plot_Temp(get_Temps())
